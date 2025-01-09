@@ -1,4 +1,4 @@
-from cached_property import cached_property
+from functools import cached_property
 from qiskit.quantum_info import Statevector
 # from qiskit.opflow import CircuitStateFn # old qiskit function replaced by Statevector
 from qiskit import QuantumCircuit

@@ -14,7 +14,7 @@ from copy import deepcopy
 from functools import reduce
 from typing import List, Union, Optional, Dict, Tuple
 from numbers import Number
-from cached_property import cached_property
+from functools import cached_property
 from scipy.stats import unitary_group
 from scipy.sparse import csr_matrix, csc_matrix, coo_matrix, dok_matrix
 from openfermion import QubitOperator, count_qubits

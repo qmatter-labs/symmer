@@ -2,7 +2,7 @@ import warnings
 
 import numpy as np
 from typing import List, Union
-from cached_property import cached_property
+from functools import cached_property
 from symmer.projection import S3Projection
 from symmer.operators import PauliwordOp, IndependentOp, QuantumState
 

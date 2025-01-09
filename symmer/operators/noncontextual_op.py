@@ -2,7 +2,7 @@ import warnings
 import itertools
 import numpy as np
 import networkx as nx
-from cached_property import cached_property
+from functools import cached_property
 from time import time
 from functools import reduce
 from typing import Optional, Union, Tuple, List
