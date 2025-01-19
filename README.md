@@ -8,6 +8,8 @@
 
 A Python package for reducing the quantum resource requirement of your problems, making them more NISQ-friendly!
 
+[Winner of the IBM Quantum Open Science Prize 2023.](https://www.ibm.com/quantum/blog/ibm-quantum-open-science-winners-2023)
+
 ## Installation
 To install this package either run:
 ```
