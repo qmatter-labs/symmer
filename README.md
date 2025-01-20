@@ -46,7 +46,6 @@ Qubit reduction techniques such as [tapering](https://arxiv.org/abs/1701.08213) 
   - Automates these qubit subspace methods for ease-of-use. 
 
 ## Performance
-
 Why should you use Symmer? It has been designed for high efficiency when manipulating large Pauli operators -- addition, multiplication, Clifford/general rotations, commutativity/contextuality checks, symmetry generation, basis reconstruction and subspace projections have all been reformulated in the symplectic representation and implemented carefully to avoid unnecessary operations and redundancy. It also has a QASM simulator for evaluating expectation values, which is efficient when restricted to Clifford operations. 
 
 ### What can Symmer do on a standard laptop in just _one_ second?
@@ -58,7 +57,6 @@ Why should you use Symmer? It has been designed for high efficiency when manipul
 All this allows us to approach significantly larger systems than was previously possible, including those exceeding the realm of classical tractibility.
 
 ## How to cite
-
 When you use in a publication or other work, please cite the following:
 
 > Tim Weaving, Alexis Ralli, Peter J. Love, Sauro Succi, and Peter V. Coveney. *Contextual Subspace Variational Quantum Eigensolver Calculation of the Dissociation Curve of Molecular Nitrogen on a Superconducting Quantum Computer.* [arXiv preprint arXiv:2312.04392](https://arxiv.org/abs/2312.04392) (2023).
