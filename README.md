@@ -57,7 +57,7 @@ Why should you use Symmer? It has been designed for high efficiency when manipul
 All this allows us to approach significantly larger systems than was previously possible, including those exceeding the realm of classical tractibility.
 
 ## How to cite
-When you use in a publication or other work, please cite the following:
+When you use Symmer in a publication or other work, please cite the following:
 
 > Tim Weaving, Alexis Ralli, Peter J. Love, Sauro Succi, and Peter V. Coveney. *Contextual Subspace Variational Quantum Eigensolver Calculation of the Dissociation Curve of Molecular Nitrogen on a Superconducting Quantum Computer.* [arXiv preprint arXiv:2312.04392](https://arxiv.org/abs/2312.04392) (2023).
 
