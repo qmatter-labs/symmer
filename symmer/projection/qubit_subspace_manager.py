@@ -108,14 +108,14 @@ class QubitSubspaceManager:
             )
 
     def get_reduced_hamiltonian(self, 
-            n_qubits:int=None, aux_operator:PauliwordOp=None
+            n_qubits:int, aux_operator:PauliwordOp=None
         ) -> PauliwordOp:
         """ 
         Project the Hamiltonian in line with the desired qubit subspace techqniques
         and, in the case of ContextualSubspace, the desired number of qubits.
 
         Args:
-            n_qubits (int): Number of Qubits. By default, it is set to None.
+            n_qubits (int): Number of Qubits.
             aux_operator (PauliwordOp): Auxiliary operator. By default, it is set to None.
 
         Returns:
