@@ -796,7 +796,7 @@ class PauliwordOp:
             complex: The expectation value.
         """
         if self.n_terms > psi.n_terms and psi.n_terms > 10:
-            return (psi.dagger * self * psi).real
+            return psi.dagger * self * psi
         else:
             if self.n_terms > 1:
                 @process.parallelize
@@ -807,7 +807,7 @@ class PauliwordOp:
             else:
                 expvals = np.array(single_term_expval(self, psi))
 
-            return np.sum(expvals * self.coeff_vec).real
+            return np.sum(expvals * self.coeff_vec)
 
     def __mul__(self, 
             mul_obj: Union["PauliwordOp", "QuantumState", complex],
