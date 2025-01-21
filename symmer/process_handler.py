@@ -15,7 +15,8 @@ class ProcessHandler:
     if sys.platform.lower() in ['linux', 'darwin', 'linux2']:
         method  = 'mp'
     else:
-        method  = 'ray' # note ray no longer a dependency - must install manually to use
+        # method  = 'ray' # note ray no longer a dependency - must install manually to use
+        method = 'single_thread'
 
     verbose = False
 
