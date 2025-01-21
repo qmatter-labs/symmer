@@ -14,7 +14,7 @@ from copy import deepcopy
 from functools import reduce
 from typing import List, Union, Optional, Dict, Tuple
 from numbers import Number
-from cached_property import cached_property
+from functools import cached_property
 from scipy.stats import unitary_group
 from scipy.sparse import csr_matrix, csc_matrix, coo_matrix, dok_matrix
 from openfermion import QubitOperator, count_qubits
@@ -271,15 +271,6 @@ class PauliwordOp:
 
         if operator_basis is not None:
             warnings.warn('Basis supplied MAY not be sufficiently expressive, output operator projected onto basis supplied.')
-        #     if isinstance(matrix, csr_matrix):
-        #         tol=1e-15
-        #         max_diff = np.abs(matrix - operator_out.to_sparse_matrix).max()
-        #         flag = not (max_diff <= tol)
-        #     else:
-        #         flag = not np.allclose(operator_out.to_sparse_matrix.toarray(), matrix)
-        #
-        #     if flag:
-        #         warnings.warn('Basis not sufficiently expressive, output operator projected onto basis supplied.')
 
         return op_basis[op_basis.coeff_vec.nonzero()[0]]
 
@@ -1468,34 +1459,6 @@ class PauliwordOp:
         """
         if self.n_qubits == 0:
             return csr_matrix(self.coeff_vec)
-
-        # if self.n_qubits>15:
-        #     from symmer.utils import get_sparse_matrix_large_pauliwordop
-        #     sparse_matrix = get_sparse_matrix_large_pauliwordop(self)
-        #     return sparse_matrix
-        # else:
-        #     x_int = binary_array_to_int(self.X_block).reshape(-1, 1)
-        #     z_int = binary_array_to_int(self.Z_block).reshape(-1, 1)
-
-        #     Y_number = np.sum(np.bitwise_and(self.X_block, self.Z_block), axis=1)
-        #     global_phase = (-1j) ** Y_number
-
-        #     dimension = 2 ** self.n_qubits
-        #     row_ind = np.repeat(np.arange(dimension).reshape(1, -1), self.X_block.shape[0], axis=0)
-        #     col_ind = np.bitwise_xor(row_ind, x_int)
-
-        #     row_inds_and_Zint = np.bitwise_and(row_ind, z_int)
-        #     vals = global_phase.reshape(-1, 1) * (-1) ** (
-        #                 count1_in_int_bitstring(row_inds_and_Zint) % 2)  # .astype(complex))
-
-        #     values_and_coeff = np.einsum('ij,i->ij', vals, self.coeff_vec)
-
-        #     sparse_matrix = csr_matrix(
-        #         (values_and_coeff.flatten(), (row_ind.flatten(), col_ind.flatten())),
-        #         shape=(dimension, dimension),
-        #         dtype=complex
-        #     )
-        #     return sparse_matrix
         
         phase = np.zeros(self.n_terms, dtype=np.uint8)
         zx = ZXPaulis(
@@ -1997,11 +1960,6 @@ class QuantumState:
         Returns:
             sparse_Qstate (csr_matrix): sparse matrix representation of the statevector.
         """
-        # nonzero_indices = [int(''.join([str(i) for i in row]),2) for row in self.state_matrix]
-        # if self.n_qubits<64:
-        #     nonzero_indices = self.state_matrix @ (1 << np.arange(self.state_matrix.shape[1])[::-1])
-        # else:
-        #     nonzero_indices = self.state_matrix @ (1 << np.arange(self.state_matrix.shape[1], dtype=object)[::-1])
         nonzero_indices = binary_array_to_int(self.state_matrix)
 
         sparse_Qstate = csr_matrix(

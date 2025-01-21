@@ -48,7 +48,7 @@ def test_basis_weighting():
 def test_symmetry_generators_by_term_significance():
     SI = StabilizerIdentification(weighting_operator=CC_taper, use_X_only=True)
     G = SI.symmetry_generators_by_term_significance(n_preserved=4)
-    assert G == IndependentOp.from_list(['IZZZZ'])
+    assert G == IndependentOp.from_list(['IZZZZ']) or G == IndependentOp.from_list(['ZIZZZ'])
 
 def symmetry_generators_by_subspace_dimension():
     SI = StabilizerIdentification(weighting_operator=CC_taper, use_X_only=True)

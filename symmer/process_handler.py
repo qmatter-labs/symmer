@@ -2,7 +2,7 @@ import os
 import sys
 import numpy as np
 import quimb
-from ray import remote, put, get
+from warnings import warn
 from multiprocessing import Process, Queue, set_start_method
 
 if sys.platform.lower() in ['linux', 'darwin', 'linux2']:
@@ -15,7 +15,8 @@ class ProcessHandler:
     if sys.platform.lower() in ['linux', 'darwin', 'linux2']:
         method  = 'mp'
     else:
-        method  = 'ray'
+        # method  = 'ray' # note ray no longer a dependency - must install manually to use
+        method = 'single_thread'
 
     verbose = False
 
@@ -35,6 +36,9 @@ class ProcessHandler:
     def _process_ray(self, func, iter, shared):
         """ Helper function for ray processing
         """
+        warn("ray is being deprecated in symmer and is no longer a dependency - must install ray manually to use.")
+        from ray import remote, put, get # deprecating, no longer a dependency
+
         if self.verbose:
             print(f'*** executing in ray mode ***')
         # duplicate func with ray.remote wrapper :

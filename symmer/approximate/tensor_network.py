@@ -3,7 +3,7 @@ from ncon import ncon
 from typing import Union, List, Dict
 from symmer.operators import PauliwordOp, QuantumState
 from copy import copy
-from cached_property import cached_property
+from functools import cached_property
 from quimb.tensor.tensor_1d import MatrixProductOperator, MatrixProductState
 from quimb.tensor.tensor_dmrg import DMRG2
 
